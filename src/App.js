@@ -10,8 +10,9 @@ const GlobalStyle = createGlobalStyle`
     
     min-height: 100vh;
     margin: 0;
-    background-color: #fff;
-    background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+background-color: #fffcfc;
+background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 
   }
 `;
@@ -77,11 +78,11 @@ function App() {
         ...prevState,
         loading: false,
       }));
-    }, 2100);
+    }, 1500);
   };
 
   const debouncedSearch = useCallback(
-    debounce((text) => search(text), 3000),
+    debounce((text) => search(text), 500),
     []
   );
 
@@ -98,7 +99,15 @@ function App() {
         clearResults={clearResults}
       />
       <GlobalStyle />
+
       {loading && <Loading />}
+      {!loading && !results.login && (
+        <div
+          style={{ margin: "0 auto", width: "fit-content", fontSize: "24px" }}
+        >
+          No Results
+        </div>
+      )}
 
       {!loading && results.login && (
         <Profile>
@@ -119,7 +128,7 @@ function App() {
       )}
       <Results>
         {!loading &&
-          repos &&
+          repos.length > 0 &&
           repos
             .sort((a, b) => (a.updated_at < b.updated_at ? 1 : -1))
             .map((repo) => {
@@ -155,7 +164,13 @@ const UserImg = styled.img`
   width: 100%;
 `;
 
-const Header = styled.h1``;
+const Header = styled.h1`
+  margin: 20px auto;
+  width: fit-content;
+  background-color: #fff;
+  padding: 10px 15px;
+  border: 3px solid #000;
+`;
 
 const Profile = styled.div`
   display: flex;
@@ -169,12 +184,14 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
 `;
+
 const Results = styled.div`
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
 `;
+
 const Repo = styled.div`
   display: inline-block;
   max-width: 300px;
