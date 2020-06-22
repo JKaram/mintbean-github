@@ -88,6 +88,7 @@ function App() {
       }));
     }, 1500);
   };
+  console.log(clear);
 
   const debouncedSearch = useCallback(
     debounce((text) => search(text), 500),
