@@ -31,13 +31,21 @@ function App() {
   const [clear, setClear] = useState(false);
 
   async function getUser(name) {
-    let response = await fetch(`https://api.github.com/users/${name}`);
+    let response = await fetch(`https://api.github.com/users/${name}`, {
+      headers: {
+        Authorization: `token ${token}`,
+      },
+    });
     let data = await response.json();
     return data;
   }
 
   async function getUserRepos(name) {
-    let response = await fetch(`https://api.github.com/users/${name}/repos`);
+    let response = await fetch(`https://api.github.com/users/${name}/repos`, {
+      headers: {
+        Authorization: `token ${token}`,
+      },
+    });
     let data = await response.json();
     return data;
   }
@@ -85,9 +93,6 @@ function App() {
     debounce((text) => search(text), 500),
     []
   );
-
-  console.log(state);
-  console.log(token, "here");
 
   return (
     <Wrapper>
