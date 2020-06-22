@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import debounce from "lodash/debounce";
 import styled, { createGlobalStyle } from "styled-components";
 import moment from "moment";
