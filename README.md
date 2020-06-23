@@ -1,3 +1,15 @@
+## Mintbean Github Project
+
+Project to demonstrate what you can do with the Github API. Search for a user on github and see thier Repos.
+
+Made in under 3 hours. Using React!
+
+[LINK TO PROJECT](https://jkaram.github.io/mintbean-github/)
+
+<br />
+<br />
+<br />
+<br />
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
